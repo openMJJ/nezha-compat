@@ -5,7 +5,7 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 
-GITHUB_RAW_URL="raw.githubusercontent.com/chenx-dust/nezha-compat/compat"
+GITHUB_RAW_URL="raw.githubusercontent.com/openMJJ/nezha-compat/compat"
 NZ_DASHBOARD_PATH="/dashboard"
 
 _repo=$1
