@@ -9,7 +9,7 @@
 
 # 兼容面板安装脚本
 # 仅支持管理哪吒面板 V1 兼容版 (非官方)
-# Github: https://github.com/OPENMJJ/nezha-compat
+# Github: https://github.com/chenx-dust/nezha-compat
 
 NZ_BASE_PATH="/opt/nezha"
 NZ_DASHBOARD_PATH="${NZ_BASE_PATH}/dashboard"
@@ -77,7 +77,7 @@ pre_check() {
         os_arch="riscv64"
     fi
 
-    GITHUB_RAW_URL="raw.githubusercontent.com/OPENMJJ/nezha-compat/compat"
+    GITHUB_RAW_URL="raw.githubusercontent.com/chenx-dust/nezha-compat/compat"
     Get_Docker_URL="get.docker.com"
     Get_Docker_Argu=" "
     Docker_IMG="ghcr.io\/chenx-dust\/nezha-dashboard"
@@ -155,7 +155,7 @@ update_script() {
        return 1
     fi
     echo "当前最新版本为: ${new_version}"
-    curl -sL https://raw.githubusercontent.com/OPENMJJ/nezha-compat/compat/script/install.sh -o /tmp/nezha.sh
+    curl -sL https://raw.githubusercontent.com/chenx-dust/nezha-compat/compat/script/install.sh -o /tmp/nezha.sh
     mv -f /tmp/nezha.sh ./nezha.sh && chmod a+x ./nezha.sh
 
     echo "3s后执行新脚本"
@@ -757,7 +757,7 @@ show_menu() {
     printf "
     ${green}哪吒监控面板 V1 兼容版管理脚本${plain} ${red}${NZ_VERSION}${plain}
     ${yellow}!!! 本脚本仅支持管理哪吒面板 V1 兼容版 (非官方) !!! ${plain}
-    --- https://github.com/OPENMJJ/nezha-compat ---
+    --- https://github.com/chenx-dust/nezha-compat ---
     ${green}1.${plain}  安装面板端
     ${green}2.${plain}  修改面板配置
     ${green}3.${plain}  启动面板
