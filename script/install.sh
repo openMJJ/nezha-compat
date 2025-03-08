@@ -80,7 +80,7 @@ pre_check() {
     GITHUB_RAW_URL="raw.githubusercontent.com/OPENMJJ/nezha-compat/compat"
     Get_Docker_URL="get.docker.com"
     Get_Docker_Argu=" "
-    Docker_IMG="ghcr.io\/OPENMJJ\/nezha-dashboard"
+    Docker_IMG="ghcr.io\/chenx-dust\/nezha-dashboard"
 }
 
 installation_check() {
@@ -412,10 +412,10 @@ restart_and_update_docker() {
 }
 
 restart_and_update_standalone() {
-    _version=$(curl -m 10 -sL "https://api.github.com/repos/OPENMJJ/nezha-compat/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
+    _version=$(curl -m 10 -sL "https://api.github.com/repos/chenx-dust/nezha-compat/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
 
     if [ -z "$_version" ]; then
-        err "获取版本号失败，请检查本机能否链接 https://api.github.com/repos/OPENMJJ/nezha-compat/releases/latest"
+        err "获取版本号失败，请检查本机能否链接 https://api.github.com/repos/chenx-dust/nezha-compat/releases/latest"
         return 1
     else
         echo "当前最新版本为: ${_version}"
@@ -429,7 +429,7 @@ restart_and_update_standalone() {
     fi
 
 
-    NZ_DASHBOARD_URL="https://github.com/OPENMJJ/nezha-compat/releases/download/${_version}/dashboard-linux-${os_arch}.zip"
+    NZ_DASHBOARD_URL="https://github.com/chenx-dust/nezha-compat/releases/download/${_version}/dashboard-linux-${os_arch}.zip"
 
 
     sudo wget -qO $NZ_DASHBOARD_PATH/app.zip "$NZ_DASHBOARD_URL" >/dev/null 2>&1 && sudo unzip -qq -o $NZ_DASHBOARD_PATH/app.zip -d $NZ_DASHBOARD_PATH && sudo mv $NZ_DASHBOARD_PATH/dashboard-linux-$os_arch $NZ_DASHBOARD_PATH/app && sudo rm $NZ_DASHBOARD_PATH/app.zip
@@ -553,7 +553,7 @@ uninstall_dashboard() {
 uninstall_dashboard_docker() {
     sudo $DOCKER_COMPOSE_COMMAND -f ${NZ_DASHBOARD_PATH}/docker-compose.yaml down
     sudo rm -rf $NZ_DASHBOARD_PATH
-    sudo docker rmi -f ghcr.io/OPENMJJ/nezha-dashboard >/dev/null 2>&1
+    sudo docker rmi -f ghcr.io/chenx-dust/nezha-dashboard >/dev/null 2>&1
     sudo docker rmi -f registry.cn-shanghai.aliyuncs.com/naibahq/nezha-dashboard >/dev/null 2>&1
 }
 
